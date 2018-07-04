@@ -3,4 +3,7 @@
     <string name="title">SLOT☆GAME</string>
     <string name="start">スタート！</string>
     <string name="record">レコード</string>
+    <string name="coron">：</string>
+    <string name="reset">リセット</string>
+    <string name="stop">ストップ</string>
 </resources>
