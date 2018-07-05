@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.SeekBar
 import android.widget.TextView
 import java.util.*
 
@@ -20,6 +21,8 @@ class gameActivity : AppCompatActivity() {
     private lateinit var resetButton: Button
     private lateinit var resultText: TextView
     private lateinit var coinText: TextView
+    private lateinit var betCoinText: TextView
+    private lateinit var seekBar: SeekBar
     //イメージデータ配列
     val imageData = listOf(R.drawable.irasuto1, R.drawable.irasuto2, R.drawable.irasuto3, R.drawable.irasuto4, R.drawable.irasuto5)
     //ランダム用
@@ -48,6 +51,7 @@ class gameActivity : AppCompatActivity() {
         //TODO　掛け金、コインの設定
         init()
         startSet()
+        //ボタンの動作
         stopButton1.setOnClickListener {
             leftNum = random.nextInt(imageSelectNum)
             leftImage.setImageResource(imageData[leftNum])
@@ -66,12 +70,12 @@ class gameActivity : AppCompatActivity() {
             stopButton3.isEnabled = false
             checkSlot()
         }
-
         //リセットボタン時の動作
         resetButton.setOnClickListener {
             stopButton1.isEnabled = true
             stopButton2.isEnabled = true
             stopButton3.isEnabled = true
+            seekBar.isEnabled = true
 
             leftNum = 99
             centerNum = 99
@@ -83,6 +87,24 @@ class gameActivity : AppCompatActivity() {
             resultText.text = ""
             resetButton.isEnabled = false
         }
+
+        //シークバーの動作
+        seekBar.setOnSeekBarChangeListener(
+                object : SeekBar.OnSeekBarChangeListener {
+                    override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                        //ツマミがドラッグされると呼ばれる
+                        betCoinText.text = getString(R.string.have_coin, progress + 10)
+                    }
+
+                    override fun onStartTrackingTouch(seekBar: SeekBar) {
+                        // ツマミがタッチされた時に呼ばれる
+                    }
+
+                    override fun onStopTrackingTouch(seekBar: SeekBar) {
+                        // ツマミがリリースされた時に呼ばれる
+                    }
+                }
+        )
 
     }
 
@@ -96,6 +118,8 @@ class gameActivity : AppCompatActivity() {
         resetButton = findViewById(R.id.resetButton)
         resultText = findViewById(R.id.resultText)
         coinText = findViewById(R.id.coinText)
+        betCoinText = findViewById(R.id.betCoinText)
+        seekBar = findViewById(R.id.betCoinBer)
         data = getSharedPreferences("MainData", Context.MODE_PRIVATE)
         editor = data.edit()
     }
@@ -108,12 +132,15 @@ class gameActivity : AppCompatActivity() {
         resetButton.isEnabled = false
         coinText.text = coin.toString()
 
+        seekBar.progress = 40
+        seekBar.max = 490
+
     }
 
     private fun checkSlot() {
         if (leftNum == centerNum && leftNum == rightNum) {
             //数値処理
-            coin += 50
+            coin += (seekBar.progress+10)*5
             playCount++
             winCount++
             editor.putInt("coin", coin)
@@ -126,7 +153,7 @@ class gameActivity : AppCompatActivity() {
             resetButton.isEnabled = true
         } else if (!stopButton1.isEnabled && !stopButton2.isEnabled && !stopButton3.isEnabled) {
             //数値処理
-            coin -= 10
+            coin -= seekBar.progress+10
             playCount++
             editor.putInt("coin", coin)
             editor.putInt("play", playCount)
@@ -136,5 +163,7 @@ class gameActivity : AppCompatActivity() {
             coinText.text = coin.toString()
             resetButton.isEnabled = true
         }
+        //掛け金変更の停止
+        seekBar.isEnabled = false
     }
 }

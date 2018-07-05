@@ -105,8 +105,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginBottom="88dp"
+        android:layout_marginStart="8dp"
         android:text="@string/coin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -115,16 +115,16 @@
         android:id="@+id/coinText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:layout_marginStart="24dp"
+        android:layout_marginBottom="84dp"
+        android:layout_marginStart="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2" />
 
     <SeekBar
-        android:id="@+id/seekBar"
+        android:id="@+id/betCoinBer"
         android:layout_width="0dp"
         android:layout_height="18dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -136,9 +136,20 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:text="掛け金"
-        app:layout_constraintBottom_toTopOf="@+id/seekBar"
+        app:layout_constraintBottom_toTopOf="@+id/betCoinBer"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/betCoinText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/betCoinBer"
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
 
 </android.support.constraint.ConstraintLayout>
