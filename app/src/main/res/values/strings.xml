@@ -7,4 +7,7 @@
     <string name="reset">リセット</string>
     <string name="stop">ストップ</string>
     <string name="coin">手持ちコイン</string>
+    <string name="count">%d回</string>
+    <string name="per">%.5f％</string>
+    <string name="have_coin">%dコイン</string>
 </resources>
