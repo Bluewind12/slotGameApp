@@ -18,17 +18,17 @@ class MainActivity : AppCompatActivity() {
         init()
 
         startButton.setOnClickListener {
-            val intent = Intent(this,gameActivity::class.java)
+            val intent = Intent(this, gameActivity::class.java)
             startActivity(intent)
         }
         materialButton.setOnClickListener {
-            val intent = Intent(this,recordActivity::class.java)
+            val intent = Intent(this, recordActivity::class.java)
             startActivity(intent)
         }
 
     }
 
-    fun init(){
+    private fun init() {
         startButton = findViewById(R.id.startButton)
         materialButton = findViewById(R.id.materialButton)
     }
