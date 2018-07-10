@@ -18,12 +18,12 @@
         </activity>
 
         <activity
-            android:name=".gameActivity"
+            android:name=".GameActivity"
             android:label="@string/title">
         </activity>
 
         <activity
-            android:name=".recordActivity"
+            android:name=".RecordActivity"
             android:label="@string/record">
         </activity>
     </application>

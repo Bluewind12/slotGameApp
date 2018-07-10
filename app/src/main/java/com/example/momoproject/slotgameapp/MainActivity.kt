@@ -18,11 +18,13 @@ class MainActivity : AppCompatActivity() {
         init()
 
         startButton.setOnClickListener {
-            val intent = Intent(this, gameActivity::class.java)
+            //画面遷移
+            val intent = Intent(this, GameActivity::class.java)
             startActivity(intent)
         }
         materialButton.setOnClickListener {
-            val intent = Intent(this, recordActivity::class.java)
+            //画面遷移
+            val intent = Intent(this, RecordActivity::class.java)
             startActivity(intent)
         }
 

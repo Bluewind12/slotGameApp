@@ -10,7 +10,7 @@ import android.widget.SeekBar
 import android.widget.TextView
 import java.util.*
 
-class gameActivity : AppCompatActivity() {
+class GameActivity : AppCompatActivity() {
     //入れ子
     private lateinit var leftImage: ImageView
     private lateinit var centerImage: ImageView
